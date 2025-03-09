@@ -6,11 +6,7 @@ import React,{useEffect,Fragment, useState} from "react";
 import { useLocation } from 'react-router-dom';
 const ZoomCdn = () => {
     const location = useLocation();
-    // const [ZoomMeetingNumber,setZoomMeetingNumber] = useState({
-    //   number:0,
-    //   pass:0
-    // });
-    // const { ZoomMeetingNumber } = location.state; 
+
     const params = new URLSearchParams(location.search);
     const zoomMeetingNumberString = params.get('ZoomMeetingNumber');
     const ZoomMeetingNumber = JSON.parse(zoomMeetingNumberString);
@@ -27,63 +23,8 @@ const ZoomCdn = () => {
   var leaveUrl = '/'
   var userId=ZoomMeetingNumber.email
   var SECRET="C7Dm4JuZ2QXoN0bM2OYTw5JxZvjPK1y9"
-  
-//   function getSignature() {
-//     const iat = Math.round(new Date().getTime() / 1000) - 30
-//     const exp = iat + 60 * 60 * 2
-//     const oHeader = { alg: 'HS256', typ: 'JWT' }
-  
-//     const oPayload = {
-//       sdkKey: sdkKey,
-//       appKey: sdkKey,
-//       mn: meetingNumber,
-//       role: role,
-//       iat: iat,
-//       exp: exp,
-//       tokenExp: exp,
-//       userId: userId,
-//     }
-  
-//     const sHeader = JSON.stringify(oHeader)
-//     const sPayload = JSON.stringify(oPayload)
-//     const sdkJWT = KJUR.jws.JWS.sign('HS256', sHeader, sPayload, SECRET);
 
-//     const data = {
-//       meetingId:meetingNumber,
-//       meetingPassword:passWord
-//     }
-   
-    
-//     return sdkJWT
-//   }
 
-//   const startZoomMeeting = () => {
-//     // Replace these values with your actual Zoom API key and meeting number
-//     const apiKey = sdkKey;
-    
-
-//     window.ZoomMtg.init({
-//       leaveUrl: leaveUrl,
-//       isSupportAV: true,
-//       success: function () {
-//         window.ZoomMtg.join({
-//           meetingNumber: meetingNumber,
-//           userName: 'Akshay Pareek',
-//           apiKey: apiKey,
-//           signature: getSignature(),
-//           success: function (res) {
-//             console.log('Meeting joined successfully:==>', res);
-//           },
-//           error: function (res) {
-//             console.error('Error joining meeting:==>', res);
-//           },
-//         });
-//       },
-//       error: function (res) {
-//         console.error('Error initializing Zoom:==>', res);
-//       },
-//     });
-//   };
 
 
 var meetingConfig ={
@@ -163,7 +104,7 @@ const serialize =(obj) => {
     return tmpSortResult;
   }
 useEffect(async()=>{
-
+   console.log("Zoom data =======>",ZoomMeetingNumber && ZoomMeetingNumber)
     const {ZoomMtg} = await import ("@zoomus/websdk");
     ZoomMtg.setZoomJSLib('https://source.zoom.us/3.1.6/lib', '/av');
     ZoomMtg.preLoadWasm();

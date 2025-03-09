@@ -10,7 +10,7 @@ export const Home = () => {
     const [loading,setloading] = useState(false);
 
     const handleBackToApp = () => {
-      window.location.href = 'samsara://home'; // Adjust this to match your app's deep link
+      window.location.href = "samsara://";; // Adjust this to match your app's deep link
     };
     const handelZoomMeeting = (Data)=>{
     
@@ -27,6 +27,7 @@ export const Home = () => {
         const queryParams = new URLSearchParams();
         queryParams.append('ZoomMeetingNumber', zoomMeetingNumberString);
         const queryString = queryParams.toString();
+        console.log("zoom data ===>",zoomMeetingNumberString)
       navigate(`/cdn?${queryString}`);
         // navigate(`cdn/`, { state: { ZoomMeetingNumber } });
       }
@@ -75,7 +76,7 @@ export const Home = () => {
       };
 
       useEffect(()=>{
-        // handleBackToApp()
+        handleBackToApp()
       },[])
   return (
     <div style={{padding:"20px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
@@ -109,6 +110,11 @@ export const Home = () => {
 
   
 </div>
+
+<Button  variant='contained' onClick={handleBackToApp}>
+          Home
+        
+          </Button>
     </div>
   )
 }
