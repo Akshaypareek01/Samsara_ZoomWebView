@@ -15,7 +15,7 @@ const ZoomCdn = () => {
   var sdkKey = 'TsFvuPFLTeKf7_bNBWggPA'
   var meetingNumber =ZoomMeetingNumber.number
   var passWord = ZoomMeetingNumber.pass
-  var role = ZoomMeetingNumber.role
+  var role = ZoomMeetingNumber.role ? ZoomMeetingNumber.role : 0
   var userName = ZoomMeetingNumber.userName
   var userEmail = ZoomMeetingNumber.email
   var registrantToken = ''
